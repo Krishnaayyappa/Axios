@@ -1,8 +1,8 @@
-axios.defaults.headers.common['X-Auth-Token'] =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
-
-  // GET REQUEST
-  function getTodos() {
+   // AXIOS GLOBALS
+    axios.defaults.headers.common['X-Auth-Token'] =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+    
+    function getTodos() {
 
     //first way
     // axios({
@@ -29,7 +29,8 @@ axios.defaults.headers.common['X-Auth-Token'] =
   
 
   // POST REQUEST
-//   function addTodo() {
+       function addTodo() {
+
 //     axios.post("https://jsonplaceholder.typicode.com/todos", {"title": "do coding",
 //     "completed": false})
 //     .then(res => showOutput(res))
@@ -47,12 +48,21 @@ axios.defaults.headers.common['X-Auth-Token'] =
   
   // PUT/PATCH REQUEST
   function updateTodo() {
-    console.log('PUT/PATCH Request');
-  }
+    axios
+        .patch("https://jsonplaceholder.typicode.com/todos/1", {
+            title: "updatedtodo",
+            completed: true
+        })
+        .then(res => showOutput(res))
+        .catch(err => console.error(err))
+    }
   
   // DELETE REQUEST
   function removeTodo() {
-    console.log('DELETE Request');
+    axios
+        .delete("https://jsonplaceholder.typicode.com/todos/1")
+        .then(res => showOutput(res))
+        .catch(err => console.error(err))
   }
   
   // SIMULTANEOUS DATA
